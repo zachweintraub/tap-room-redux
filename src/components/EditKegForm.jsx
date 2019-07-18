@@ -10,7 +10,21 @@ function EditKegForm(props) {
   let _remaining = "";
 
   const handleSaveKeg = () => {
-    
+    const { dispatch } = props;
+    const updatedKeg = {
+      id: props.thisKeg.id,
+      brewery: _brewery.value,
+      name: _name.value,
+      abv: _abv.value,
+      price: _price.value,
+      remaining: _remaining.value
+    }
+    const action = {type: 'UPDATE_KEG',
+      id: props.thisKeg.id,
+      updatedKeg: updatedKeg};
+
+    dispatch(action);
+    props.onFinishEdit();
   }
 
   return(
@@ -20,7 +34,7 @@ function EditKegForm(props) {
       <td><input defaultValue={props.thisKeg.abv} ref={(input) => _abv = input}/></td>
       <td><input defaultValue={props.thisKeg.price} ref={(input) => _price = input}/></td>
       <td><input defaultValue={props.thisKeg.remaining} ref={(input) => _remaining = input}/></td>
-      <td><button>Save</button><button onClick={props.onFinishEdit}>Cancel</button></td>
+      <td><button onClick={handleSaveKeg}>Save</button><button onClick={props.onFinishEdit}>Cancel</button></td>
     </tr>
   );
 }
