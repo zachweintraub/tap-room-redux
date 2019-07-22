@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { v4 } from 'uuid';
+import { addKeg } from '../actions';
 
 function NewKegForm(props) {
 
@@ -13,15 +14,7 @@ function NewKegForm(props) {
   function onSaveNewKeg(e) {
     e.preventDefault();
     const { dispatch } = props;
-    const action = {
-      type: 'ADD_KEG',
-      id: v4(),
-      brewery: _brewery.value,
-      name: _name.value,
-      abv: _abv.value,
-      price: _price.value
-    }
-    dispatch(action);
+    dispatch(addKeg({id: v4(), brewery: _brewery.value, name: _name.value, abv: _abv.value, price: _price.value}));
     props.onClickCancel();
   }
 

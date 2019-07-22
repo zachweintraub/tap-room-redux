@@ -57,7 +57,8 @@ function TapList(props) {
 
 const mapStateToProps = state => {
   return {
-    kegList: state.kegList
+    kegList: state.kegList,
+    isFetching: state.isFetching
   };
 };
 

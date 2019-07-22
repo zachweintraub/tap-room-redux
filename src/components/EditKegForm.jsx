@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { updateKeg } from '../actions';
 
 function EditKegForm(props) {
 
@@ -19,11 +20,7 @@ function EditKegForm(props) {
       price: _price.value,
       remaining: _remaining.value
     }
-    const action = {type: 'UPDATE_KEG',
-      id: props.thisKeg.id,
-      updatedKeg: updatedKeg};
-
-    dispatch(action);
+    dispatch(updateKeg(props.thisKeg.id, updatedKeg));
     props.onFinishEdit();
   }
 

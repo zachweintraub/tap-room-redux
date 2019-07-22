@@ -1,5 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { deleteKeg, updateKeg } from '../actions';
 
 function EmployeeButtons(props) {
 
@@ -7,21 +8,12 @@ function EmployeeButtons(props) {
     let updatedKeg = Object.assign({}, props.thisKeg);
     updatedKeg.remaining--;
     const { dispatch } = props;
-    const action = {
-      type: 'UPDATE_KEG',
-      id: props.thisKeg.id,
-      updatedKeg: updatedKeg
-    }
-    dispatch(action);
+    dispatch(updateKeg(props.thisKeg.id, updatedKeg));
   }
 
   const handleDeleteKeg = () => {
     const { dispatch } = props;
-    const action = {
-      type: 'DELETE_KEG',
-      id: props.thisKeg.id
-    }
-    dispatch(action);
+    dispatch(deleteKeg(props.thisKeg.id));
   }
 
   return(

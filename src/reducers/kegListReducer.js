@@ -1,4 +1,6 @@
-export default (state = {}, action) => {
+import { initialState } from '../constants/InitialState';
+
+export default (state = initialState.kegList, action) => {
   let newState;
   switch(action.type) {
     case 'ADD_KEG': {
