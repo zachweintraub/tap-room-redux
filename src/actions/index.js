@@ -26,6 +26,7 @@ export const updateKeg = (id, updatedKeg) => {
   }
 }
 
+//https://api.punkapi.com/v2/beers/random
 export const fetchRandomKegs = () => {
   return {};
 }
