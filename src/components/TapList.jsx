@@ -6,7 +6,11 @@ import NewKegControl from './NewKegControl';
 function TapList(props) {
 
   const tapListContent = () => {
-    if(Object.keys(props.kegList).length === 0) {
+    if(props.isFetching) {
+      return(
+        <p>LOADING...</p>
+      );
+    } else if(Object.keys(props.kegList).length === 0) {
       return (
       <div>
         <p>There are currently no kegs on tap!</p>
